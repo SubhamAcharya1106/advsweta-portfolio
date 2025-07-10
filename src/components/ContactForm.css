@@ -1,0 +1,84 @@
+.contact-section {
+  background: #f3f4f6;
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.contact-card {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+  max-width: 550px;
+  width: 100%;
+}
+
+.contact-card h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.contact-card p {
+  text-align: center;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 8px 12px;
+  margin-bottom: 20px;
+  background: #fff;
+}
+
+.form-group svg {
+  margin-right: 10px;
+  color: #888;
+  font-size: 1.1rem;
+}
+
+.form-group input,
+.form-group textarea {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 0.95rem;
+  background: transparent;
+  padding: 8px 0;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+button[type='submit'] {
+  width: 100%;
+  background-color: #3b82f6;
+  color: white;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button[type='submit']:hover {
+  background-color: #2563eb;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #64748b; /* You can change this to any of the above */
+  font-weight: 500;
+  font-size: 0.95rem;
+  opacity: 1; /* ensure it’s not faded */
+}

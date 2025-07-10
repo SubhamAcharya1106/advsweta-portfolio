@@ -1,0 +1,42 @@
+.stats-wrapper {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 40px;
+}
+
+.stats-container {
+  display: flex;
+  justify-content: space-around;
+  background: white;
+  padding: 25px 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  max-width: 800px;
+  width: 100%;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.stat-box {
+  text-align: center;
+  flex: 1;
+  min-width: 140px;
+  border-right: 1px solid #eee;
+}
+
+.stat-box:last-child {
+  border-right: none;
+}
+
+.stat-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: #5d5ff5;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: #444;
+  margin-top: 4px;
+}
