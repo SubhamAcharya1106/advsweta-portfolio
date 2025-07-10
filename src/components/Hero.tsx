@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Image from "next/image";
 import "../styles/Hero.css";
 import HeroStats from "./HeroStats";
 
@@ -29,9 +30,11 @@ const Hero = () => {
 
       <div className="hero-right">
         <div className="hero-image-wrapper">
-          <img
+          <Image
             src="/sweta.jpg"
             alt="Advocate Sweta"
+            width={300}
+            height={300}
             className="hero-image"
           />
         </div>

@@ -3,6 +3,7 @@
 import React from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import './ServiceDetail.css';
 
 const servicesData: Record<string, {
@@ -13,7 +14,7 @@ const servicesData: Record<string, {
 }> = {
   'legal-consultation': {
     title: 'Legal Support Made Easy',
-    intro: `Legal consultation is your gateway to expert legal guidance — whether you're facing a dispute, signing a contract, or launching a business.
+    intro: `Legal consultation is your gateway to expert legal guidance — whether you&apos;re facing a dispute, signing a contract, or launching a business.
     Our goal is to simplify the law and provide clarity, not confusion. We take pride in offering calm, professional, and actionable advice, personalized to your unique legal situation.
     From civil to corporate concerns, we help you make informed decisions with full confidence.`,
     handle: `
@@ -29,8 +30,8 @@ const servicesData: Record<string, {
     title: 'Criminal Lawyer Services',
     image: '/service-banners/criminal-law.png',
     intro: `
-      Booked for any crime or offense? Don't get panicked. Our Criminal Law practice brings in-depth
-      knowledge and experience tackling all types of criminal cases. We've delivered satisfying results
+      Booked for any crime or offense? Don&apos;t get panicked. Our Criminal Law practice brings in-depth
+      knowledge and experience tackling all types of criminal cases. We&apos;ve delivered satisfying results
       for clients facing charges.
 
       Our services range from anticipatory bail to defending clients in sessions and high courts.
@@ -49,7 +50,7 @@ const servicesData: Record<string, {
     title: 'Civil Dispute Resolution',
     image: '/service-banners/civil-disputes.png',
     intro: `
-      Civil disputes can drain time and energy — whether it's a property disagreement, landlord-tenant
+      Civil disputes can drain time and energy — whether it&apos;s a property disagreement, landlord-tenant
       conflict, or inheritance case.
       Our goal is to resolve your issue swiftly and fairly through strategic legal remedies and negotiation.
     `,
@@ -103,34 +104,36 @@ export default function ServiceDetailPage() {
   if (!service) return <div className="service-container">Service not found</div>;
 
   return (
-  <div className="service-container">
-    <h1 className="service-title">{service.title}</h1>
+    <div className="service-container">
+      <h1 className="service-title">{service.title}</h1>
 
-    <div className="service-detail-wrapper">
-      {service.image && (
-        <img
-          src={service.image}
-          alt={service.title}
-          className="service-banner"
-        />
-      )}
+      <div className="service-detail-wrapper">
+        {service.image && (
+          <Image
+            src={service.image}
+            alt={service.title}
+            width={1200}
+            height={400}
+            className="service-banner"
+          />
+        )}
 
-      <div className="service-text">
-        <h2 className="section-heading">About the Service</h2>
-        <p className="service-description">{service.intro}</p>
+        <div className="service-text">
+          <h2 className="section-heading">About the Service</h2>
+          <p className="service-description">{service.intro}</p>
 
-        <h2 className="section-heading">How Will I Handle It?</h2>
-        <p className="service-description">{service.handle}</p>
+          <h2 className="section-heading">How Will I Handle It?</h2>
+          <p className="service-description">{service.handle}</p>
 
-        <Link href="/" className="back-link">&larr; Back to Services</Link>
+          <Link href="/" className="back-link">&larr; Back to Services</Link>
+        </div>
+      </div>
+
+      <div className="sticky-contact-box">
+        <strong>Contact Me:</strong><br />
+        📞 +91-7064986280<br />
+        📧 swetatripathy1999@gmail.com
       </div>
     </div>
-
-    <div className="sticky-contact-box">
-      <strong>Contact Me:</strong><br />
-      📞 +91-7064986280<br />
-      📧 swetatripathy1999@gmail.com
-    </div>
-  </div>
-)
+  );
 }

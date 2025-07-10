@@ -1,43 +1,79 @@
+/* Header container */
 .header {
   background-color: #fff;
   border-bottom: 1px solid #eaeaea;
-  padding: 10px 30px;
+  padding: 10px 20px;
   position: sticky;
   top: 0;
   z-index: 1000;
 }
 
+/* Main flex layout */
 .header-container {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  flex-direction: column;
 }
 
+/* Top row: logo + toggle */
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* Logo style */
 .logo {
   font-weight: bold;
   font-size: 1.2rem;
   color: #2563eb;
-  flex: 1;
 }
 
-/* Center aligned contact info */
-.contact-center {
-  flex: 1.8;
+/* Hamburger / Cross icon */
+.menu-toggle {
+  display: none;
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #444;
+}
+
+/* Contact section */
+.contact-info {
   display: flex;
-  justify-content: center;
-  gap: 20px;
-  font-size: 0.9rem;
+  align-items: center;
+  gap: 15px;
+  font-size: 0.85rem;
   color: #444;
   flex-wrap: wrap;
+  margin-top: 10px;
 }
 
-/* Navigation on right */
-.nav {
-  flex: 1.2;
+.contact-item {
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
+  gap: 6px;
+}
+
+.icon {
+  color: #888;
+}
+
+/* Hide mobile contacts by default */
+.contact-info.mobile {
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 5px;
+  padding-top: 10px;
+}
+
+/* Navigation menu */
+.nav {
+  display: flex;
   gap: 20px;
+  margin-top: 10px;
 }
 
 .nav a {
@@ -46,46 +82,30 @@
   font-weight: 500;
 }
 
-.menu-toggle {
-  display: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-/* MOBILE VIEW */
+/* Responsive styles */
 @media (max-width: 768px) {
-  .header-container {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
+  /* Hide nav by default on mobile */
   .nav {
     display: none;
     flex-direction: column;
     gap: 10px;
     width: 100%;
-    margin-top: 10px;
+    padding-left: 5px;
   }
 
   .nav.open {
     display: flex;
   }
 
-  .contact-center {
+  .contact-info.desktop {
     display: none;
+  }
+
+  .contact-info.mobile {
+    display: flex;
   }
 
   .menu-toggle {
     display: block;
-  }
-
-  .contact-mobile {
-    padding: 10px 20px;
-    font-size: 0.9rem;
-  }
-
-  .contact-mobile p {
-    margin: 4px 0;
-    color: #444;
   }
 }

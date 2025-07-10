@@ -1,78 +1,63 @@
-'use client';
+"use client";
 import React, { useState } from 'react';
 import './ContactForm.css';
-import { FaUser, FaEnvelope, FaPhone, FaCommentDots } from 'react-icons/fa';
+
+interface FormData {
+  name: string;
+  email: string;
+  phone: string;
+  message: string;
+}
 
 const ContactForm = () => {
-  const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });
+  const [formData, setFormData] = useState<FormData>({
+    name: '',
+    email: '',
+    phone: '',
+    message: '',
+  });
 
-  const handleChange = (e: any) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert('Message sent successfully! (Not connected to backend yet)');
-    setForm({ name: '', email: '', phone: '', message: '' });
+    setSubmitted(true);
+    console.log('Form submitted:', formData);
   };
 
   return (
-    <section className="contact-section">
-      <div className="contact-card">
-        <h2>Let's Talk</h2>
-        <p>Have a legal question or want to discuss your case? Drop a message below.</p>
-
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <FaUser />
-            <input
-              type="text"
-              name="name"
-              placeholder="Your Name *"
-              value={form.name}
-              onChange={handleChange}
-              required
-            />
-          </div>
-
-          <div className="form-group">
-            <FaEnvelope />
-            <input
-              type="email"
-              name="email"
-              placeholder="Your Email *"
-              value={form.email}
-              onChange={handleChange}
-              required
-            />
-          </div>
-
-          <div className="form-group">
-            <FaPhone />
-            <input
-              type="text"
-              name="phone"
-              placeholder="Phone (optional)"
-              value={form.phone}
-              onChange={handleChange}
-            />
-          </div>
-
-          <div className="form-group">
-            <FaCommentDots />
-            <textarea
-              name="message"
-              placeholder="Your Message *"
-              value={form.message}
-              onChange={handleChange}
-              required
-            ></textarea>
-          </div>
-
+    <div className="contact-form-container" id="contact">
+      {submitted ? (
+        <div className="success-message">Thank you! Your message has been received.</div>
+      ) : (
+        <form onSubmit={handleSubmit} className="contact-form">
+          <label>
+            Your Name *
+            <input type="text" name="name" value={formData.name} onChange={handleChange} required />
+          </label>
+          <label>
+            Your Email *
+            <input type="email" name="email" value={formData.email} onChange={handleChange} required />
+          </label>
+          <label>
+            Phone (optional)
+            <input type="tel" name="phone" value={formData.phone} onChange={handleChange} />
+          </label>
+          <label>
+            Your Message *
+            <textarea name="message" value={formData.message} onChange={handleChange} required />
+          </label>
           <button type="submit">Send Message</button>
         </form>
-      </div>
-    </section>
+      )}
+    </div>
   );
 };
 
