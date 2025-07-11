@@ -1,4 +1,5 @@
 "use client";
+
 import React from "react";
 import "../styles/Services.css";
 import { useRouter } from "next/navigation";
@@ -8,31 +9,36 @@ const services = [
     slug: "legal-consultation",
     title: "Legal Consultation",
     icon: "🧑‍⚖️",
-    description: "One-on-one professional legal advice for civil, criminal, or corporate matters.",
+    description:
+      "One-on-one professional legal advice for civil, criminal, or corporate matters.",
   },
   {
     slug: "criminal-law",
     title: "Criminal Lawyer Services",
     icon: "🚨",
-    description: "Preparation of agreements, notices, contracts, and affidavits with legal accuracy.",
+    description:
+      "Preparation of agreements, notices, contracts, and affidavits with legal accuracy.",
   },
   {
     slug: "civil-disputes",
     title: "Civil Dispute Resolution",
     icon: "📊",
-    description: "Representing clients in District Courts and High Court for litigation matters.",
+    description:
+      "Representing clients in District Courts and High Court for litigation matters.",
   },
   {
     slug: "corporate-law",
     title: "Corporate Law & Business Support",
     icon: "🏛️",
-    description: "Quick response and assistance for bail, FIR quashing, and criminal defense.",
+    description:
+      "Quick response and assistance for bail, FIR quashing, and criminal defense.",
   },
   {
     slug: "documentation",
     title: "Document Drafting & Verification",
     icon: "📄",
-    description: "Helping startups and firms stay compliant with company law and regulations.",
+    description:
+      "Helping startups and firms stay compliant with company law and regulations.",
   },
 ];
 
@@ -40,13 +46,15 @@ const Services = () => {
   const router = useRouter();
 
   return (
-    <section className="services-section" id="services">
+    <section id="services" className="services-section">
       <h2 className="services-heading">My Legal Services</h2>
-      <div className="services-grid">
+      <div className="services-container">
         {services.map((service, index) => (
-          <div className="service-card" key={index}>
-            <div className="service-icon">{service.icon}</div>
-            <h3 className="service-title">{service.title}</h3>
+          <div className="service-box" key={index}>
+            <div className="service-top">
+              <span className="service-icon">{service.icon}</span>
+              <h3 className="service-title">{service.title}</h3>
+            </div>
             <p className="service-description">{service.description}</p>
             <button
               className="know-more-btn"

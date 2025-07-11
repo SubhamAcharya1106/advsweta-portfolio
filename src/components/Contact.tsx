@@ -1,87 +1,76 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import './ContactForm.css';
-import { FaUser, FaEnvelope, FaPhone, FaCommentDots } from 'react-icons/fa';
+import React, { useState } from "react";
+import "./ContactForm.css";
 
-interface FormData {
-  name: string;
-  email: string;
-  phone: string;
-  message: string;
-}
-
-const ContactForm: React.FC = () => {
-  const [form, setForm] = useState<FormData>({
-    name: '',
-    email: '',
-    phone: '',
-    message: '',
+const ContactForm = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // For now, just alert
-    alert('Form submitted!');
+    setSubmitted(true);
+    console.log("Form submitted:", formData);
   };
 
   return (
-    <section className="contact-section">
-      <form className="contact-form" onSubmit={handleSubmit}>
-        <div className="input-group">
-          <FaUser className="input-icon" />
-          <input
-            type="text"
-            name="name"
-            value={form.name}
-            onChange={handleChange}
-            placeholder="Your Name"
-            required
-          />
-        </div>
+    <section className="contact-section" id="contact">
+      <div className="contact-card">
+        <h2>Get In Touch</h2>
+        <p>Let’s build something amazing together. Send me a message!</p>
 
-        <div className="input-group">
-          <FaEnvelope className="input-icon" />
-          <input
-            type="email"
-            name="email"
-            value={form.email}
-            onChange={handleChange}
-            placeholder="Your Email"
-            required
-          />
-        </div>
-
-        <div className="input-group">
-          <FaPhone className="input-icon" />
-          <input
-            type="tel"
-            name="phone"
-            value={form.phone}
-            onChange={handleChange}
-            placeholder="Phone (optional)"
-          />
-        </div>
-
-        <div className="input-group">
-          <FaCommentDots className="input-icon" />
-          <textarea
-            name="message"
-            value={form.message}
-            onChange={handleChange}
-            placeholder="Your Message"
-            required
-          ></textarea>
-        </div>
-
-        <button type="submit" className="submit-button">
-          Send Message
-        </button>
-      </form>
+        {submitted ? (
+          <div className="success-message">
+            ✅ Thank you! Your message has been received.
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit} className="contact-form">
+            <input
+              type="text"
+              name="name"
+              placeholder="Your Name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Your Email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+            <input
+              type="tel"
+              name="phone"
+              placeholder="Phone (optional)"
+              value={formData.phone}
+              onChange={handleChange}
+            />
+            <textarea
+              name="message"
+              placeholder="Your Message"
+              value={formData.message}
+              onChange={handleChange}
+              required
+            />
+            <button type="submit">Send Message</button>
+          </form>
+        )}
+      </div>
     </section>
   );
 };

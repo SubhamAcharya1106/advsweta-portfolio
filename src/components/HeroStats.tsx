@@ -1,16 +1,16 @@
 "use client";
 import React from "react";
-import "../styles/HeroStats.css";
+import "../styles/HeroStats.css"; // <-- just import CSS here, don't write it in this file
 
 const HeroStats = () => {
   const stats = [
     {
-      value: "3+",
-      label: "Years of Experience",
+      value: "1+",
+      label: "Years",
     },
     {
       value: "50+",
-      label: "Clients Represented",
+      label: "Clients",
     },
     {
       value: "100+",

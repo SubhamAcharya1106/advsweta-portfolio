@@ -1,17 +1,18 @@
 .services-section {
   padding: 60px 30px;
-  background-color: #ffffff;
+  background-color: #0f1115;
+  color: #fff;
   text-align: center;
 }
 
 .services-heading {
   font-size: 28px;
-  color: #3b82f6;
   font-weight: 700;
+  color: #facc15;
   margin-bottom: 40px;
 }
 
-.services-grid {
+.services-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -20,50 +21,68 @@
   margin: 0 auto;
 }
 
-.service-card {
-  background: #f9f9fb;
+.service-box {
+  background-color: #111827;
   padding: 24px;
-  border-radius: 12px;
-  max-width: 300px;
-  flex: 1;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 16px;
+  width: 100%;
+  max-width: 320px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease;
+  text-align: left;
 }
 
-.service-card:hover {
+.service-box:hover {
   transform: translateY(-6px);
 }
 
+.service-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
 .service-icon {
-  font-size: 36px;
-  margin-bottom: 16px;
+  font-size: 28px;
 }
 
 .service-title {
   font-size: 18px;
   font-weight: 600;
-  color: #1a1a1a;
-  margin-bottom: 8px;
+  color: #facc15;
 }
 
 .service-description {
   font-size: 15px;
-  color: #555;
-  line-height: 1.6;
+  line-height: 1.7;
+  color: #e5e7eb;
+  margin-bottom: 20px;
 }
+
 .know-more-btn {
-  margin-top: 16px;
-  padding: 10px 20px;
-  background-color: #3b82f6;
-  color: white;
+  background-color: #facc15;
+  color: #111;
+  padding: 10px 16px;
   border: none;
   border-radius: 8px;
   font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .know-more-btn:hover {
-  background-color: #2563eb;
+  background-color: #eab308;
 }
 
+@media (max-width: 768px) {
+  .services-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .service-box {
+    width: 90%;
+  }
+}
